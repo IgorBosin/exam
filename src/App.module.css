@@ -1,8 +1,11 @@
 .border {
-    width: 100px;
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%);
     border: 2px aqua solid;
     border-radius: 3px;
-    margin: auto;
+    /*margin: auto;*/
+    /*width: 100px;*/
     margin-top: 5px;
 }
 
