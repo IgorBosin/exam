@@ -1,0 +1,37 @@
+.buttons {
+    display: flex;
+    justify-content: space-around;
+    padding: 2px;
+    border-radius: 5px;
+    margin: 5px;
+    border: 2px aqua solid;
+}
+.button {
+    margin: 1px;
+    background-color: aqua;
+}
+
+.maxNumber {
+    width: 200px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: red;
+    border: 3px aqua solid;
+    border-radius: 5px;
+    margin: 5px;
+    background-color: aqua;
+}
+
+.number {
+    width: 200px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    border: 3px aqua solid;
+    margin: 5px;
+    border-radius: 5px;
+    background-color: aqua;
+}
+
+

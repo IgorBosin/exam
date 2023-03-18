@@ -18,8 +18,8 @@ const Button = (props: ButtonPoprsType) => {
             <button
                 className={s.button}
                 disabled={props.disabledButton}
-                onClick={onClickHandler}
-            >{props.name}
+                onClick={onClickHandler}>
+                {props.name}
             </button>
         </div>
     );

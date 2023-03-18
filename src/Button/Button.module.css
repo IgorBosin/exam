@@ -1,7 +1,8 @@
 .button {
     margin: 1px;
     background-color: aqua;
-
+    height: 20px;
+    width: 80px;
 }
 
 
