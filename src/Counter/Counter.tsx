@@ -9,7 +9,6 @@ type CounterType = {
     maxValue: number
     startValue: number
     error: string
-    incorrectValue: boolean
 }
 
 export const Counter: FC<CounterType> = (
@@ -19,20 +18,22 @@ export const Counter: FC<CounterType> = (
         maxValue,
         startValue,
         error,
-        incorrectValue,
     }) => {
+
 
     const increaseButton = () => {
         if (currentNumber < maxValue) {
             setCurrentNumber(currentNumber + 1)
         }
-    }//counter
+    }
 
     const resetButton = () => {
         setCurrentNumber(startValue)
-    }//counter
+    }
 
     let enteringValue: string | number = error ? error : currentNumber //counter
+
+    const incorrectValue = error === "Incorrect value"
 
     return (
         <div>

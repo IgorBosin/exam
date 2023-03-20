@@ -27,4 +27,3 @@ const Button = (props: ButtonPoprsType) => {
 
 export default Button;
 
-// <button disabled={условие=>boolean}>Add</button> )

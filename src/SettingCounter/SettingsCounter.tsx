@@ -10,7 +10,6 @@ type SettingsCounterType = {
     setStartValue: (startValue: number) => void
     maxValue: number
     setMaxValue: (maxValue: number) => void
-    incorrectValue: boolean
 }
 
 export const SettingsCounter: FC<SettingsCounterType> = (
@@ -21,10 +20,9 @@ export const SettingsCounter: FC<SettingsCounterType> = (
         setMaxValue,
         startValue,
         setStartValue,
-        incorrectValue
     }) => {
 
-    const [disabledSetButton, setDisabledSetButton] = useState<boolean>(false)
+    const [isDisabledSetButton, setisDisabledSetButton] = useState<boolean>(false)
 
     useEffect(() => {
         let maxValue = localStorage.getItem('maxValue')
@@ -37,32 +35,48 @@ export const SettingsCounter: FC<SettingsCounterType> = (
             let newValue = JSON.parse(startValue)
             setStartValue(newValue)
         }
-    }, []) ///setting counter
+    }, [])
 
     const setSettingCounter = () => {
         localStorage.setItem('maxValue', JSON.stringify(maxValue))
         localStorage.setItem('startValue', JSON.stringify(startValue))
         setCurrentNumber(startValue)
         setError('')
-        setDisabledSetButton(true)
-    }///setting counter
+        setisDisabledSetButton(true)
+    }
 
     const changeStartValueHandler = (e: ChangeEvent<HTMLInputElement>) => {
         const value = +e.currentTarget.value
         setStartValue(value)
-        const error = value >= 0 && value < maxValue ? "enter values and press 'set'" : "Incorrect value"
-        setError(error)
-        incorrectValue ? setDisabledSetButton(true) : setDisabledSetButton(false)
-    }//counter
+        if (value >= 0 && value < maxValue) {
+            setError("enter values and press 'set'")
+            setisDisabledSetButton(false)
+        } else {
+            setError("Incorrect value")
+            setisDisabledSetButton(true)
+        }
+    }
+
+    // const changeError = (currentTargetValue:number,   ) =>{
+    //     if (currentTargetValue >= 0 && currentTargetValue > startValue) {
+    //         setError("enter values and press 'set'")
+    //         setisDisabledSetButton(false)
+    //     } else {
+    //         setError("Incorrect value")
+    //         setisDisabledSetButton(true)
+    // }
 
     const changeMaxValueHandler = (e: ChangeEvent<HTMLInputElement>) => {
         const value = +e.currentTarget.value
         setMaxValue(value)
-        const error = value > 0 && value > startValue ? "enter values and press 'set'" : "Incorrect value"
-        setError(error)
-        incorrectValue ? setDisabledSetButton(true) : setDisabledSetButton(false)
-    }//counter
-
+        if (value >= 0 && value > startValue) {
+            setError("enter values and press 'set'")
+            setisDisabledSetButton(false)
+        } else {
+            setError("Incorrect value")
+            setisDisabledSetButton(true)
+        }
+    }
     return (
         <div>
             <div className={s.containerInput}>
@@ -80,7 +94,7 @@ export const SettingsCounter: FC<SettingsCounterType> = (
                 </div>
             </div>
             <div className={s.button}>
-                <Button name='set' callBack={setSettingCounter} disabledButton={disabledSetButton}/>
+                <Button name='set' callBack={setSettingCounter} disabledButton={isDisabledSetButton}/>
             </div>
         </div>
     );
